@@ -35423,7 +35423,7 @@ if (-not $HierarchyMapOnly) {
     }
 
     if ($azAPICallConf['htParameters'].DoAzureConsumption -eq $true) {
-        getConsumption
+        getConsumptionv2
     }
 
     getOrphanedResources
