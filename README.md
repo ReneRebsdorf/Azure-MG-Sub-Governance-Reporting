@@ -1,5 +1,7 @@
 # Azure Governance Visualizer aka AzGovViz
 
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/JulianHayward/Azure-MG-Sub-Governance-Reporting/badge)](https://scorecard.dev/viewer/?uri=github.com/JulianHayward/Azure-MG-Sub-Governance-Reporting)
+
 _Do you want to get granular insights on your technical Azure Governance implementation and document it in CSV, HTML, Markdown, and JSON?_
 
 Azure Governance Visualizer is a PowerShell based script that iterates through your Azure Tenant's Management Group hierarchy, starting from the root Management Group down to the Subscription, Resource Group and Resource level. It collects data from various Azure APIs including Azure ARM, Microsoft Graph and Storage.
@@ -82,7 +84,7 @@ The [Azure Governance Visualizer accelerator](https://github.com/Azure/Azure-Gov
 
 ## Release history
 
-**Changes** (2024-July-15 / 6.4.12 Minor)
+**Changes** (2024-August-15 / 6.5.0 Minor/Patch)
 
 - ALZ policy refresh H2 FY24 (initiatives.json)
 - [DevSkim](https://github.com/microsoft/DevSkim-Action), [PSScriptAnalyzer](https://github.com/microsoft/psscriptanalyzer-action) and [OpenSSF Scorecard](https://github.com/ossf/scorecard?tab=readme-ov-file#scorecard-github-action) integration
@@ -91,7 +93,7 @@ The [Azure Governance Visualizer accelerator](https://github.com/Azure/Azure-Gov
 - update GitHub workflows to use azure/login@v2 (previous: azure/login@v1):
   - [AzGovViz_OIDC.yml](/.github/workflows/AzGovViz_OIDC.yml)
   - [AzGovViz.yml](/.github/workflows/AzGovViz.yml)
-- update getConsumption (experimental for now): instead of full Management Group scope costmanagement data retrieval, batch by Subscription quotaId in batches of 100. Failing batches and batches of Subscriptions of quotaId `CSP_2015-05-01` (see param block variable `SubscriptionQuotaIdsThatDoNotSupportCostManagementManagementGroupScopeQuery`) will fallback to get costmanagement data per Subscription. In order to use this you must update the AzGovVizParallel.ps1 file to use the function `getConsumptionv2` instead of `getConsumption`
+- update getConsumption (getConsumptionv2): instead of full Management Group scope costmanagement data retrieval, batch by Subscription quotaId in batches of 100. Failing batches and batches of Subscriptions of quotaId `CSP_2015-05-01` (see param block variable `SubscriptionQuotaIdsThatDoNotSupportCostManagementManagementGroupScopeQuery`) will fallback to get costmanagement data per Subscription.
 - html; update jquery; source tablefilter js
 - update `.devcontainer/devcontainer.json`
 - use [AzAPICall](https://aka.ms/AzAPICall) PowerShell module version 1.2.3 (Handle costManagement error `SubscriptionCostDisabled`)
